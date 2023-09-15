@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Game.h"
 
-Game::Game()
-: buildingManager(500), layerManager(), ui_ {nullptr} {
+Game::Game(std::unique_ptr<UI> ui)
+: buildingManager(500), layerManager(), ui_ (std::move(ui)) {
     buildingManager.AddBuilding(1);
     buildingManager.AddBuilding(0);
 }
@@ -39,4 +39,16 @@ void Game::Render() {
     ui_->EndRender();
 }
 
-bool Game::IsRunning() const { return isRunning_; }
+void Game::run() {
+    isRunning_ = true;
+
+    while (isRunning_) {
+        ui_->StartFrame();
+
+        HandleEvents();
+        Update();
+        Render();
+
+        ui_->EndFrame();
+    }
+}

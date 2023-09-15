@@ -16,8 +16,9 @@ add_executable(sdl_rendering_poc src/main.cpp
         src/UI/Layer.cpp
         src/UI/Layer.h
         src/UI/Color.h
-        src/UIFramework/UI.cpp
         src/UIFramework/UI.h
+        src/UIFramework/SDLUI.cpp
+        src/UIFramework/SDLUI.h
 )
 
 # SDL2

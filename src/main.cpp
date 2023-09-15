@@ -1,27 +1,16 @@
 #include <iostream>
 #include "Game.h"
 #include "UIFramework/UI.h"
-
-Game* game = nullptr;
-UI* ui = nullptr;
+#include "UIFramework/SDLUI.h"
 
 int main(int argc, char *args[]) {
-    ui = new UI {500, 500, "Hello World!", true, false};
 
-    game = new Game();
-    game->ui_ = ui;
-    game->isRunning_ = true;
+    std::unique_ptr<UI> ui = std::make_unique<SDLUI>(
+            500, 500, "Hello World!", true, false);
 
-    while (game->IsRunning()) {
-        ui->StartFrame();
+    Game game(std::move(ui));
 
-        game->HandleEvents();
-        game->Update();
-        game->Render();
+    game.run();
 
-        ui->EndFrame();
-    }
-
-    delete game;
     return 0;
 }

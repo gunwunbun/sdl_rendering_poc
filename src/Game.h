@@ -12,12 +12,15 @@ private:
     LayerManager layerManager;
     const int baseLayerPosY = 250;
     const int layerPosYModifier = 50;
+    std::unique_ptr<UI> ui_;
 public:
-    UI *ui_;
     bool isRunning_ = false;
 
-    Game();
+    Game(std::unique_ptr<UI> ui);
     ~Game();
+    void run();
+
+
     void HandleEvents();
     void Update();
     void Render();
