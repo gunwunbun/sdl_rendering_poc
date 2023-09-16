@@ -2,13 +2,13 @@
 #define SDL_RENDERING_POC_BUILDINGMANAGER_H
 
 #include <vector>
-#include "Building.h"
+#include "building.h"
 
 class BuildingManager {
 private:
     std::vector<Building> buildings_;
 
-    const int maxPosX;
+    const int kMaxPosX;
     int min_width_ = 10;
     int min_height_ = 15;
     int max_width_ = 50;
@@ -18,7 +18,7 @@ public:
 
     void AddBuilding(int layer);
     void MoveBuildings();
-    [[nodiscard]] const std::vector<Building>& buildings() const;
+    [[nodiscard]] const std::vector<Building>& Buildings() const;
 };
 
 

@@ -3,22 +3,22 @@ project(sdl_rendering_poc)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(sdl_rendering_poc src/main.cpp
-        src/Game.cpp
-        src/Game.h
-        src/Building/Building.cpp
-        src/Building/Building.h
-        src/Building/BuildingManager.cpp
-        src/Building/BuildingManager.h
-        src/Building/BuildingConfig.h
-        src/UI/LayerManager.cpp
-        src/UI/LayerManager.h
-        src/UI/Layer.cpp
-        src/UI/Layer.h
-        src/UI/Color.h
-        src/UIFramework/UI.h
-        src/UIFramework/SDLUI.cpp
-        src/UIFramework/SDLUI.h
+add_executable(sdl_rendering_poc src/main.cc
+        src/game.cc
+        src/game.h
+        src/building/building.cc
+        src/building/building.h
+        src/building/building_manager.cc
+        src/building/building_manager.h
+        src/building/building_config.h
+        src/ui/layer_manager.cc
+        src/ui/layer_manager.h
+        src/ui/layer.cc
+        src/ui/layer.h
+        src/ui/color.h
+        src/ui_framework/ui.h
+        src/ui_framework/sdl_ui.cc
+        src/ui_framework/sdl_ui.h
 )
 
 # SDL2

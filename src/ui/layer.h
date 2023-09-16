@@ -2,13 +2,13 @@
 #define SDL_RENDERING_POC_LAYER_H
 
 #include <vector>
-#include "Color.h"
+#include "color.h"
 
 class Layer {
 public:
-    Color baseColor;
-    std::vector<Color> shades;
-    Layer(const Color& color);
+    Color base_color_;
+    std::vector<Color> shades_;
+    explicit Layer(const Color& color);
 };
 
 
