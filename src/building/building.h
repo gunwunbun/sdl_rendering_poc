@@ -12,7 +12,7 @@ private:
 
     const BuildingConfig config_;
 public:
-    explicit Building(int min_width, int min_height, int max_width, int max_height, int max_pos_x, int layer);
+    explicit Building(int min_width, int min_height, int max_width, int max_height, int max_pos_x, int layer, int layer_shade);
 
     void Move();
     void ResetAtStart();
@@ -22,6 +22,7 @@ public:
     int PosX() const;
     int PosY() const;
     int Layer() const;
+    int Shade() const;
 };
 
 

@@ -16,7 +16,7 @@ private:
 public:
     explicit BuildingManager(int max_pos_x);
 
-    void AddBuilding(int layer);
+    void AddBuilding(int layer, int layer_shade);
     void MoveBuildings();
     [[nodiscard]] const std::vector<Building>& Buildings() const;
 };
