@@ -2,41 +2,39 @@
 
 SdlUi::SdlUi(int window_width, int window_height, const char* window_title, bool is_centered, bool is_fullscreen)
         : window_{nullptr}, renderer_{nullptr} {
-    if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
-        auto flags = is_fullscreen ? SDL_WINDOW_FULLSCREEN : 0;
-        int windowPos = is_centered ? SDL_WINDOWPOS_CENTERED : SDL_WINDOWPOS_UNDEFINED;
+  if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
+    auto flags = is_fullscreen ? SDL_WINDOW_FULLSCREEN : 0;
+    int windowPos = is_centered ? SDL_WINDOWPOS_CENTERED : SDL_WINDOWPOS_UNDEFINED;
 
-      window_ = SDL_CreateWindow(window_title, windowPos, windowPos, window_width, window_height, flags);
+    window_ = SDL_CreateWindow(window_title, windowPos, windowPos, window_width, window_height, flags);
 
-        if (window_) {
-          renderer_ = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED);
-            if (renderer_) {
-                SDL_SetRenderDrawColor(renderer_, 255, 255, 255, 255);
-            }
-        }
+    if (window_) {
+      renderer_ = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED);
+      if (renderer_) SDL_SetRenderDrawColor(renderer_, 255, 255, 255, 255);
     }
+  }
 }
 
 void SdlUi::StartRender() {
-    SDL_RenderClear(renderer_);
+  SDL_RenderClear(renderer_);
 }
 
 void SdlUi::EndRender() {
-    SDL_RenderPresent(renderer_);
+  SDL_RenderPresent(renderer_);
 }
 
 void SdlUi::DrawRectangle(int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
-    SDL_Rect rect = {x, y, width, height};
+  SDL_Rect rect = {x, y, width, height};
 
-    SDL_SetRenderDrawColor(renderer_, r, g, b, a);
-    SDL_RenderFillRect(renderer_, &rect);
-    SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
+  SDL_SetRenderDrawColor(renderer_, r, g, b, a);
+  SDL_RenderFillRect(renderer_, &rect);
+  SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
 }
 
 SdlUi::~SdlUi() {
-    SDL_DestroyWindow(window_);
-    SDL_DestroyRenderer(renderer_);
-    SDL_Quit();
+  SDL_DestroyWindow(window_);
+  SDL_DestroyRenderer(renderer_);
+  SDL_Quit();
 }
 
 void SdlUi::StartFrame() {

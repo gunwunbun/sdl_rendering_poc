@@ -4,11 +4,11 @@
 #include "ui_framework/sdl_ui.h"
 
 int main(int argc, char *args[]) {
-    std::unique_ptr<UI> ui = std::make_unique<SdlUi>(
-            500, 500, "Rendering PoC", true, false);
+  std::unique_ptr<UI> ui = std::make_unique<SdlUi>(500, 500, "Rendering PoC",
+                                                   true, false);
 
-    Game game(std::move(ui));
-    game.Run();
+  Game game(std::move(ui));
+  game.Run();
 
-    return 0;
+  return 0;
 }
