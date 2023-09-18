@@ -6,9 +6,10 @@
 
 class Layer {
 public:
-  Color base_color_;
-  std::vector<Color> shades_;
-  explicit Layer(const Color& color);
+    Color base_color_;
+    std::vector<Color> shades_;
+    explicit Layer(const Color& color);
+    const Color& GetColor(int shade) const;
 };
 
 

@@ -1,4 +1,6 @@
 #include "layer_manager.h"
 
 LayerManager::LayerManager()
-: layers_ {Layer(Color(255, 0, 0)), Layer(Color(0, 255, 0)), Layer(Color(0, 0, 255))} {}
+    : layers_ {Layer(Color(221, 160, 221)),
+               Layer(Color(173, 216, 230)),
+               Layer(Color(255, 165, 0))} {}
