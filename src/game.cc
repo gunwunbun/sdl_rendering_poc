@@ -2,8 +2,10 @@
 #include "game.h"
 
 Game::Game(std::unique_ptr<UI> ui)
-: building_manager_(500), layer_manager_(), ui_ (std::move(ui)) {
+: layer_manager_(), ui_ (std::move(ui)), building_manager_() {
   int amount_per_layer = 15;
+
+  building_manager_.SetMaxPosX(ui_->WindowWidth());
 
   for (int i = 0; i < amount_per_layer; i++)
     building_manager_.AddBuilding(2, rand()%((4)));

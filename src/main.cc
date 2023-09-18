@@ -5,7 +5,7 @@
 
 int main(int argc, char *args[]) {
     std::unique_ptr<UI> ui = std::make_unique<SdlUi>(
-            500, 500, "Rendering PoC", true, false);
+            500, 300, "Rendering PoC", true, false);
 
     Game game(std::move(ui));
     game.Run();
