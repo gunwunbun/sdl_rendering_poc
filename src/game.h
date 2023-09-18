@@ -15,13 +15,13 @@ private:
   const int kLayerPosYModifier = 50;
   bool is_running_ = false;
 public:
-    explicit Game(std::unique_ptr<UI> ui);
-    ~Game();
+  explicit Game(std::unique_ptr<UI> ui);
+  ~Game();
 
-    void Run();
-    void HandleEvents();
-    void Update();
-    void Render();
+  void Run();
+  void HandleEvents();
+  void Update();
+  void Render();
 };
 
 #endif //SDL_RENDERING_POC_GAME_H

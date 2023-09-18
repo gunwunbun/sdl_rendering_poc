@@ -20,49 +20,49 @@ Game::Game(std::unique_ptr<UI> ui)
 Game::~Game() = default;
 
 void Game::HandleEvents() {
-    SDL_Event event;
-    SDL_PollEvent(&event);
+  SDL_Event event;
+  SDL_PollEvent(&event);
 
-    switch (event.type) {
-        case SDL_QUIT:
-          is_running_ = false;
-        default:
-            break;
-    }
+  switch (event.type) {
+    case SDL_QUIT:
+      is_running_ = false;
+    default:
+      break;
+  }
 }
 
 void Game::Update() {
-    building_manager_.MoveBuildings();
+  building_manager_.MoveBuildings();
 }
 
 void Game::Render() {
-    ui_->StartRender();
+  ui_->StartRender();
 
-    for (const Building& building : building_manager_.Buildings()) {
-      auto z = layer_manager_.layers_[building.Layer()].GetColor(building.Shade());
+  for (const Building& building : building_manager_.Buildings()) {
+    auto z = layer_manager_.layers_[building.Layer()].GetColor(building.Shade());
 
-      int yPos = kBaseLayerPosY - (kLayerPosYModifier * building.Layer()) - building.Height();
+    int yPos = kBaseLayerPosY - (kLayerPosYModifier * building.Layer()) - building.Height();
 
-      // Make sure yPos is at least the same as layer 0's Y position
-      yPos = std::max(yPos, kBaseLayerPosY - (kLayerPosYModifier * 0) - building.Height());
+    // Make sure yPos is at least the same as layer 0's Y position
+    yPos = std::max(yPos, kBaseLayerPosY - (kLayerPosYModifier * 0) - building.Height());
 
-      ui_->DrawRectangle(building.PosX(), yPos, building.Width(), building.Height(),
-                         z.red, z.green, z.blue, 255);
-    }
+    ui_->DrawRectangle(building.PosX(), yPos, building.Width(), building.Height(),
+                       z.red, z.green, z.blue, 255);
+  }
 
-    ui_->EndRender();
+  ui_->EndRender();
 }
 
 void Game::Run() {
   is_running_ = true;
 
-    while (is_running_) {
-        ui_->StartFrame();
+  while (is_running_) {
+    ui_->StartFrame();
 
-        HandleEvents();
-        Update();
-        Render();
+    HandleEvents();
+    Update();
+    Render();
 
-        ui_->EndFrame();
-    }
+    ui_->EndFrame();
+  }
 }
