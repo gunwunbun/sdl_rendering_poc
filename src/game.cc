@@ -7,7 +7,7 @@ Game::Game(std::unique_ptr<UI> ui)
 
   building_manager_.SetMaxPosX(ui_->WindowWidth());
 
-  for (int i = 0; i < amount_per_layer; i++)
+  for (int i = 0; i < amount_per_layer * 1.2; i++)
     building_manager_.AddBuilding(2, rand()%((4)));
 
   for (int i = 0; i < amount_per_layer * 0.9; i++)

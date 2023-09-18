@@ -8,15 +8,15 @@ Building::Building(int min_width, int min_height, int max_width, int max_height,
 }
 
 void Building::Move() {
-  pos_x_ += config_.kLayer == 0 ? 3 : (config_.kLayer == 1 ? 3 : 1);
+  pos_x_ += config_.kLayer == 0 ? 3 : (config_.kLayer == 1 ? 2 : 1);
   if (pos_x_ > config_.kMaxPosX) ResetAtStart();
 }
 
 void Building::ResetAtStart() {
-  pos_x_ = 0;
-  pos_y_ = 100;
   width_ = rand()%((config_.kMaxWidth - config_.kMinWidth) + 1) + config_.kMinWidth + config_.kLayer * 10;
   height_ = rand()%((config_.kMaxHeight - config_.kMinHeight) + 1) + config_.kMinHeight + config_.kLayer * 45;
+  pos_x_ = 0 - width_;
+  pos_y_ = 100;
 }
 
 int Building::Width() const {
