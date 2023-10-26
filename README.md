@@ -1,5 +1,7 @@
 # SDL Rendering - proof of concept
 
+![](preview.gif)
+
 ## Introduction
 This proof of concept C++ project contains a small app that renders 
 objects to a window.
